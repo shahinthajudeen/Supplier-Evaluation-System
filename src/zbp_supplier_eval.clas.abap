@@ -1,0 +1,5 @@
+CLASS zbp_supplier_eval DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zi_suppliereval.
+ENDCLASS.
+
+CLASS zbp_supplier_eval IMPLEMENTATION.
+ENDCLASS.

@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service Definition for Supplier Eval'
+define service ZUI_SUPPLIEREVAL_O4 {
+  expose ZC_SupplierEval as SupplierEvaluation;
+  expose I_Country       as Country;
+}

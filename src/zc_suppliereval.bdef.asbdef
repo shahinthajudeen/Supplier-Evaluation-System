@@ -1,0 +1,10 @@
+projection;
+
+define behavior for ZC_SupplierEval alias SupplierEval
+{
+  use create;
+  use update;
+  use delete;
+
+  use action SetPerfectScore;
+}

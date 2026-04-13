@@ -1,0 +1,38 @@
+unmanaged implementation in class zbp_supplier_eval unique;
+
+define behavior for ZI_SupplierEval alias SupplierEval
+lock master
+{
+  // 1. Field Properties
+  field ( mandatory : create, readonly : update ) SupplierId;
+  field ( mandatory ) SupplierName;
+
+  // --- NEW: Added ScoreCriticality to the read-only list so it doesn't try to save ---
+  field ( readonly ) CreatedBy, CreatedAt, LastChangedBy, LastChangedAt, ScoreCriticality;
+
+  // 2. Standard Operations
+  create;
+  update;
+  delete;
+
+  // 3. Custom Actions
+  action ( features : instance ) SetPerfectScore result [1] entity ZI_SupplierEval;
+
+  // 4. Database Mapping
+  mapping for zsupp_eval_db
+  {
+    SupplierId      = supplier_id;
+    SupplierName    = supplier_name;
+    Industry        = industry;
+    CountryCode     = country_code;
+    EvaluationDate  = evaluation_date;
+    QualityScore    = quality_score;
+    DeliveryScore   = delivery_score;
+    OverallScore    = overall_score;
+    EvalComments    = eval_comments;
+    CreatedBy       = created_by;
+    CreatedAt       = created_at;
+    LastChangedBy   = last_changed_by;
+    LastChangedAt   = last_changed_at;
+  }
+}

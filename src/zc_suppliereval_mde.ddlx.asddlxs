@@ -1,0 +1,81 @@
+@Metadata.layer: #CORE
+
+@UI: {
+  headerInfo: { typeName: 'Supplier Evaluation',
+                typeNamePlural: 'Supplier Evaluations',
+                title: { type: #STANDARD, value: 'SupplierName' },
+                description: { type: #STANDARD, value: 'SupplierId' } }
+}
+annotate view ZC_SupplierEval with 
+{
+
+  @UI.facet: [ 
+    { id: 'ScoreHeader', purpose: #HEADER, type: #DATAPOINT_REFERENCE, targetQualifier: 'OverallScoreDP', position: 10 },
+    { id: 'Supplier', purpose: #STANDARD, type: #IDENTIFICATION_REFERENCE, label: 'Supplier Details', position: 20 } 
+  ]
+                 
+  @EndUserText.label: 'Supplier ID'
+  @UI.lineItem: [ 
+    { position: 10 }, 
+    { type: #FOR_ACTION, dataAction: 'SetPerfectScore', label: 'Give Perfect Score', position: 10 } 
+  ]
+  @UI.identification: [ 
+    { position: 10 },
+    { type: #FOR_ACTION, dataAction: 'SetPerfectScore', label: 'Give Perfect Score', position: 10 }
+  ]
+  SupplierId;
+  
+  @EndUserText.label: 'Supplier Name'
+  @UI.lineItem: [{ position: 20 }]
+  @UI.identification: [{ position: 20 }]
+  SupplierName;
+  
+  @EndUserText.label: 'Industry'
+  @UI.lineItem: [{ position: 30 }]
+  @UI.identification: [{ position: 30 }]
+  Industry;
+  
+  @EndUserText.label: 'Country'
+  @UI.lineItem: [{ position: 40 }]
+  @UI.identification: [{ position: 40 }]
+  CountryCode;
+  
+  @EndUserText.label: 'Evaluation Date'
+  @UI.lineItem: [{ position: 50 }]
+  @UI.identification: [{ position: 50 }]
+  EvaluationDate;
+  
+  @EndUserText.label: 'Quality Score'
+  @UI.lineItem: [{ position: 60 }]
+  @UI.identification: [{ position: 60 }]
+  QualityScore;
+  
+  @EndUserText.label: 'Delivery Score'
+  @UI.lineItem: [{ position: 70 }]
+  @UI.identification: [{ position: 70 }]
+  DeliveryScore;
+  
+  @EndUserText.label: 'Overall Score'
+  @UI.lineItem: [{ position: 80, criticality: 'ScoreCriticality', criticalityRepresentation: #WITHOUT_ICON }]
+  @UI.identification: [{ position: 80, criticality: 'ScoreCriticality' }]
+  @UI.dataPoint: { qualifier: 'OverallScoreDP', title: 'Overall Score', criticality: 'ScoreCriticality' }
+  OverallScore;
+  
+  @EndUserText.label: 'Evaluation Comments'
+  @UI.identification: [{ position: 90 }]
+  @UI.multiLineText: true
+  EvalComments;
+
+  @UI.hidden: true
+  ScoreCriticality;
+
+  @UI.hidden: true
+  CreatedBy;
+  @UI.hidden: true
+  CreatedAt;
+  @UI.hidden: true
+  LastChangedBy;
+  @UI.hidden: true
+  LastChangedAt;
+
+}
